@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="page-header">
+            <h2><strong>Detail adresy</strong></h2>
+        </div>
+        <h4><strong>Ulice: </strong>{{ adresa.ulice }}</h4>
+        <h4><strong>Číslo popisné: </strong>{{ adresa.cislo_popisne}}</h4>
+        <h4><strong>Město: </strong>{{ adresa.mesto }}</h4>
+        <h4><strong>PSČ </strong>{{ adresa.smerovaci_cislo }}</h4>
+    <a href="{% url 'adresa_edit' adresa.id %}" class="btn btn-warning" role="button">Upravit</a>
+    </div>
+    <br>
+    <div class="container">
+    <form action="{% url 'adresa_delete' adresa.id %}" method="post">
+        {% csrf_token %}
+        <input type="submit" class="btn btn-danger" role="button" value="Smazat">
+        </form>
+         </div>
+    <br>
+    <div class="container">
+
+    <a href="{% url 'seznam_adres' %}" class="btn btn-primary" role="button">Zpět</a>
+
+    </div>
+{% endblock %}

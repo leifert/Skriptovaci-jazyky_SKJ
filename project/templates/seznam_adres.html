@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+<div class="page-header">
+            <h1>Seznam všech adres</h1>
+        </div>
+<a href="{% url 'adresa_add'%}" class="btn btn-success" role="button">Přidat</a>
+<table class="table table-hover">
+    <thead>
+      <tr>
+          <th>Ulice</th>
+          <th>Číslo popisné</th>
+          <th>Město</th>
+          <th>PSČ</th>
+          <th>#</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for adresa in adresy %}
+      <tr>
+          <td>{{ adresa.ulice}}</td>
+          <td>{{ adresa.cislo_popisne }}</td>
+          <td>{{ adresa.mesto }}</td>
+          <td>{{ adresa.smerovaci_cislo }}</td>
+            <td><a href="{% url 'adresa_info' adresa.id %}"> Detail</a></td>
+      </tr>
+     {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}

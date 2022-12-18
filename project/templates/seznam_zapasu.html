@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+<div class="page-header">
+            <h1>Seznam všech zápasů</h1>
+        </div>
+<div class="text-right">
+<a href="{% url 'zapas_add'%}" class="btn btn-success" role="button">Přidat</a>
+<br>
+</div>
+
+<form action="{% url 'seznam_zapasu' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p}}
+<input type="submit" class="btn btn-info" value="Vyhledat">
+</form>
+
+
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+          <th>Kolo</th>
+          <th>Domácí</th>
+          <th>Výsledek</th>
+          <th>Hosté</th>
+          <th>#</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for zapas in zapasy %}
+      <tr>
+          <td>{{ zapas.kolo }}</td>
+          <td>{{ zapas.domaci }}</td>
+          <td>{{ zapas.domaci_sety }}-{{ zapas.hoste_sety }}</td>
+          <td>{{ zapas.hoste }}</td>
+          <td><a href="{% url 'zapas_info' zapas.id %}"> Detail</a></td>
+      </tr>
+     {% endfor %}
+    </tbody>
+  </table>
+<a href="{% url 'main' %}" class="btn btn-primary" role="button">Zpět</a>
+</div>
+
+{% endblock %}

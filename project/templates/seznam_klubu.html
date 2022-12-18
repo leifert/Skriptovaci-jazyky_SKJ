@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+<div class="page-header">
+            <h1>Seznam všech klubů</h1>
+        </div>
+<a href="{% url 'klub_add'%}" class="btn btn-success" role="button">Přidat</a>
+<table class="table table-hover">
+    <thead>
+      <tr>
+          <th>Klub</th>
+          <th>#</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for klub in kluby %}
+      <tr>
+          <td>{{ klub.nazev }}</td>
+      <td><a href="{% url 'klub_info2' klub.id %}"> Detail</a></td>
+      </tr>
+     {% endfor %}
+    </tbody>
+  </table>
+<a href="{% url 'main' %}" class="btn btn-primary" role="button">Zpět</a>
+</div>
+
+{% endblock %}

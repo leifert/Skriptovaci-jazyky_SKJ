@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="page-header">
+            <h2><strong>Detail haly</strong></h2>
+        </div>
+        <h4><strong>Název </strong>{{ hala.nazev }}</h4>
+        <h4><strong>Adresa: </strong>{{ hala.adresa }}</h4>
+        <h4><strong>Kapacita: </strong>{{ hala.kapacita }} osob</h4>
+    <a href="{% url 'hala_edit' hala.id %}" class="btn btn-warning" role="button">Upravit</a>
+    </div>
+    <br>
+    <div class="container">
+    <form action="{% url 'hala_delete' hala.id %}" method="post">
+        {% csrf_token %}
+        <input type="submit" class="btn btn-danger" role="button" value="Smazat">
+        </form>
+         </div>
+    <br>
+    <div class="container">
+
+    <a href="{% url 'seznam_hal' %}" class="btn btn-primary" role="button">Zpět</a>
+
+    </div>
+{% endblock %}

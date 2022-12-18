@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="page-header">
+            <h2><strong>Detail trenéra</strong></h2>
+        </div>
+        <h4><strong>Jméno: </strong>{{ trener.jmeno }} {{ trener.prijmeni }}</h4>
+        <h4><strong>Datum narození: </strong>{{ trener.datum_narozeni|date:"j.n.Y" }}</h4>
+    <a href="{% url 'trener_edit' trener.id %}" class="btn btn-warning" role="button">Upravit</a>
+    </div>
+    <br>
+    <div class="container">
+    <form action="{% url 'trener_delete' trener.id %}" method="post">
+        {% csrf_token %}
+        <input type="submit" class="btn btn-danger" role="button" value="Smazat">
+        </form>
+         </div>
+    <br>
+    <div class="container">
+
+    <a href="{% url 'seznam_treneru' %}" class="btn btn-primary" role="button">Zpět</a>
+
+    </div>
+{% endblock %}

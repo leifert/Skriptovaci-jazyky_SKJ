@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+    <div class="container">
+    <div class="page-header">
+            <h2>Soupiska klubu</h2>
+        </div>
+        {% for hrac in Hraci %}
+    <div class="col-md-3">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+              <h3>{{ hrac.jmeno }} {{ hrac.prijmeni }}</h3>
+          </div>
+          <div class="panel-body">
+              <h5><strong>Datum narození:</strong> {{ hrac.datum_narozeni|date:"j.n.Y" }}</h5>
+              <h5><strong>Výška:</strong> {{ hrac.vyska }} cm</h5>
+              <h5><strong>Pozice:</strong> {{ hrac.pozice }}</h5>
+              <h5><strong>Klub:</strong> {{ hrac.klub }}</h5>
+          </div>
+        </div>
+    </div>
+    {% endfor %}
+
+    </div>
+    <div class="container">
+    <form>
+            <input type="button" class="btn btn-primary" value="Zpět" onclick="history.back()">
+        </form>
+    </div>
+{% endblock %}

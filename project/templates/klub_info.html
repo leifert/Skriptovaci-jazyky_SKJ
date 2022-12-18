@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="page-header">
+            <h2><strong>{{ klub.nazev }}</strong></h2>
+        </div>
+        <h4><strong>Trenér:</strong><a href="{% url 'trener_info' klub.trener.id %}"> {{ klub.trener }}</a></h4>
+        <h4><strong>Hala:</strong> {{ klub.hala.nazev }}</h4>
+        <h4><strong>Kapacita haly:</strong> {{ klub.hala.kapacita }} osob</h4>
+        <h4><strong>Adresa:</strong> {{ klub.hala.adresa }}</h4>
+         <h4><a href="{% url 'klub_hraci' klub.id %}">Hráči</a></h4>
+        <a href="{% url 'main' %}" class="btn btn-primary" role="button">Zpět</a>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+<div class="page-header">
+            <h1>Seznam všech hal</h1>
+        </div>
+<a href="{% url 'hala_add'%}" class="btn btn-success" role="button">Přidat</a>
+<table class="table table-hover">
+    <thead>
+      <tr>
+          <th>Hala</th>
+          <th>Adresa</th>
+          <th>#</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for hala in haly %}
+      <tr>
+          <td>{{ hala.nazev }}</td>
+          <td>{{ hala.adresa }}</td>
+            <td><a href="{% url 'hala_info' hala.id %}"> Detail</a></td>
+      </tr>
+     {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}

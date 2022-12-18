@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+<div class="page-header">
+            <h1>Seznam všech trenérů</h1>
+        </div>
+<a href="{% url 'trener_add'%}" class="btn btn-success" role="button">Přidat</a>
+<table class="table table-hover">
+    <thead>
+      <tr>
+          <th>Jméno</th>
+          <th>#</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for trener in treneri %}
+      <tr>
+          <td>{{ trener.jmeno}} {{ trener.prijmeni}}</td>
+            <td><a href="{% url 'trener_info2' trener.id %}"> Detail</a></td>
+      </tr>
+     {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}

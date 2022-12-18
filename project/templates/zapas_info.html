@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="page-header">
+            <h2><strong>Detail zápasu</strong></h2>
+        </div>
+        <h4><strong>Kolo: </strong>{{ zapas.kolo }}</h4>
+        <h4><strong>Datum zápasu: </strong>{{ zapas.datum_zapasu|date:"j.n.Y H:i" }}</h4>
+        <h4><strong>Domácí: </strong>{{ zapas.domaci }}</h4>
+        <h4><strong>Výsledek </strong>{{ zapas.domaci_sety }}-{{ zapas.hoste_sety }}</h4>
+        <h4><strong>Hosté: </strong>{{ zapas.hoste }}</h4>
+    <a href="{% url 'zapas_edit' zapas.id %}" class="btn btn-warning" role="button">Upravit</a>
+    </div>
+    <br>
+    <div class="container">
+    <form action="{% url 'zapas_delete' zapas.id %}" method="post">
+        {% csrf_token %}
+        <input type="submit" class="btn btn-danger" role="button" value="Smazat">
+        </form>
+         </div>
+    <br>
+    <div class="container">
+
+    <a href="{% url 'seznam_zapasu' %}" class="btn btn-primary" role="button">Zpět</a>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="page-header">
+            <h2><strong>Vložit trenéra</strong></h2>
+        </div>
+        <form action="{% url 'trener_add'%}" method="post">
+            {% csrf_token %}
+            {{ form.as_p}}
+            <input type="submit" class="btn btn-success" value="Vložit">
+        </form>
+
+    <br>
+    </div>
+    <div class="container">
+    <form>
+            <input type="button" class="btn btn-primary" value="Zpět" onclick="history.back()">
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="page-header">
+            <h2><strong>{{ trener }}</strong></h2>
+        </div>
+        <h4><strong>Datum narození:</strong> {{ trener.datum_narozeni|date:"j.n.Y" }}</h4>
+        <form>
+            <input type="button" class="btn btn-primary" value="Zpět" onclick="history.back()">
+        </form>
+    </div>
+{% endblock %}

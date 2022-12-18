@@ -1,0 +1,56 @@
+<style>
+table tbody {
+    counter-reset: rowNumber;
+}
+table tbody tr {
+    counter-increment: rowNumber;
+}
+table tr td:first-child::before {
+    content: counter(rowNumber);
+    min-width: 1em;
+    margin-right: 0.5em;
+}
+</style>
+
+{% extends "base.html" %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="page-header">
+            <h1>UNIQA EXTRALIGA MUŽI</h1>
+        </div>
+
+    <h3>Výsledná tabulka</h3>
+
+    <table class="table table-striped">
+    <thead>
+      <tr>
+          <th>Pořadí</th>
+          <th>Klub</th>
+          <th>Zápasů celkem</th>
+          <th>Vyhrané zápasy</th>
+          <th>Prohrané zápasy</th>
+          <th>Vyhrané sety</th>
+          <th>Prohrané sety</th>
+          <th>Body</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for t in tab %}
+      <tr>
+          <td></td>
+          <td><strong><a href="{% url 'klub_info' t.klub_id %}">{{ t.klub }}</a></strong></td>
+          <td>{{ t.zapasy_celkem }}</td>
+          <td>{{ t.vyhry }}</td>
+          <td>{{ t.prohry }}</td>
+          <td>{{ t.vyhrane_sety }}</td>
+          <td>{{ t.prohrane_sety }}</td>
+          <td><strong>{{ t.body }}</strong></td>
+      </tr>
+     {% endfor %}
+    </tbody>
+  </table>
+
+    </div>
+{% endblock %}
